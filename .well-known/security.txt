@@ -1,0 +1,5 @@
+# If you found a problem with this site, tell me. I'd genuinely like to know.
+Contact: mailto:joshvreidbusiness@gmail.com
+Expires: 2027-09-29T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://jreid-sec.github.io/.well-known/security.txt

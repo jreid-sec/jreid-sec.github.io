@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<!-- COPY THIS FILE to jr-00N-short-name.html for each new write-up.
+     Don't link to this template from the index. Static: no script, no boot. -->
+<title>jr#00N :: TITLE :: Joshua Reid</title>
+<meta name="description" content="ONE-SENTENCE SUMMARY">
+</head>
+<body class="reader">
+<a class="skip" href="#main">Skip to content</a>
+<div class="term">
+<header class="tb">
+  <div class="seal" aria-hidden="true"><span>監</span></div>
+  <div class="tt"><div class="l1">Corp<span class="long">orate</span> Security Terminal</div>
+  <div class="l2"><span class="ja" lang="ja">企業保安部</span><span class="wide">SECURITY OPERATIONS DIVISION // </span>NODE 04-B // FLOOR 88</div></div>
+  <div class="clock" aria-hidden="true"><span class="now">jr#00N</span><span>TEXTFILE</span></div>
+</header>
+<div class="chev" aria-hidden="true"></div>
+<div class="alert"><span><span class="pill">jr#00N</span>TEXTFILE<span class="wide"> // REMOTE MOUNT jr-01</span></span><span class="ja" lang="ja">文書</span></div>
+
+<main class="screen" id="main">
+<article class="read">
+<p class="cmd" aria-hidden="true"><span class="u">ghost@jr-01</span><span class="p">:/public$</span> <span class="c">cat textfiles/jr-00N.txt</span></p>
+
+<h1>Title goes here</h1>
+<p class="meta">released 2026-MM-DD &middot; proxmox / opnsense / att&amp;ck &middot; <a href="https://github.com/jreid-sec/homelab-soc">repo</a></p>
+
+<section class="tldr" aria-label="Summary">
+  <p class="lbl">SUMMARY</p>
+  <dl>
+    <dt>What</dt><dd>One sentence: what you built, broke, or investigated.</dd>
+    <dt>Tools</dt><dd>The short list. Proxmox, OPNsense, Wazuh, Sysmon.</dd>
+    <dt>ATT&amp;CK</dt><dd>Technique IDs this covers, e.g. T1558.003 Kerberoasting.</dd>
+    <dt>Outcome</dt><dd>The result in one line: what now works, or what you can now detect.</dd>
+  </dl>
+</section>
+
+<h2>Environment</h2>
+<p>Host hardware, hypervisor version, and the VMs involved, with versions.
+Enough that someone could rebuild it. A topology diagram belongs here:</p>
+<!-- Diagrams: export your Mermaid source to SVG, save it under
+     /assets/diagrams/, and point src at it. Write alt text that says what the
+     diagram shows. Add "wide" to the figure's class for diagrams wider than
+     they are tall, so phones scroll them instead of shrinking them. -->
+<figure class="figure wide">
+  <div class="scroll"><img class="diagram" src="/assets/diagrams/topology-example.svg" alt="Lab topology: Kali on the Latitude reaches the OptiPlex lab through a WireGuard tunnel into OPNsense, which watches traffic with Suricata and Zeek; Linux targets report to Wazuh, and the Windows domain reports to Splunk."></div>
+  <figcaption>Two-machine lab topology. Example image: replace it.</figcaption>
+</figure>
+
+<h2>What I did</h2>
+<p>The build or the attack, step by step, at the level of detail someone could
+reproduce. Short paragraphs. Put commands in code blocks, like this:</p>
+<pre><code># list the VMs on the Proxmox host
+qm list</code></pre>
+<p>Inline names like <code>vmbr0</code> or <code>EventID 4769</code> get code
+formatting too.</p>
+
+<h2 class="broke">What broke</h2>
+<p>The most important section. What failed, what you thought was wrong, what
+was actually wrong, and the evidence that told you. Hiring managers read this
+section first.</p>
+
+<h2>Detection</h2>
+<p>The rule or search that catches it, and the ATT&amp;CK technique it maps to.
+Paste the rule in a code block and explain each condition in a sentence.</p>
+
+<h2>What I'd do differently</h2>
+<p>One honest paragraph.</p>
+
+<p class="back"><a href="/#textfiles">&larr; back to the textfiles</a></p>
+</article>
+</main>
+
+<footer class="foot">
+  <span>PROPERTY OF THE CORPORATION. UNAUTHORIZED USE VIOLATES SECURITY DIRECTIVE 7. <span class="ja" lang="ja">無断使用禁止</span></span>
+  <span>TTY0 <b>HIJACKED</b> // 0 TRACKERS</span>
+</footer>
+</div>
+</body>
+</html>
