@@ -19,15 +19,17 @@
   --teal:  #05d9e8;     /* the runner: links, prompt, remote content        */
   --tealx: rgba(5, 217, 232, .35);
 
-  --mono: ui-monospace, "Cascadia Mono", "SF Mono", "JetBrains Mono", Menlo,
-          Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
-  --cond: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", "TeX Gyre Heros Cn",
+  /* Self-hosted OFL faces first (assets/fonts/fonts.css), system stacks behind
+     them so text renders instantly and degrades cleanly. */
+  --mono: "JR Mono", "JR JP", ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas,
+          "Liberation Mono", "DejaVu Sans Mono", monospace;
+  --cond: "JR Display", "JR JP", "Arial Narrow", "Roboto Condensed", "Helvetica Neue",
           "Liberation Sans Narrow", Arial, sans-serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
-          "Liberation Sans", Arial, sans-serif;
-  --jp:   "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans CJK JP",
+  --sans: "JR Sans", "JR JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+          "Noto Sans", "Liberation Sans", Arial, sans-serif;
+  --jp:   "JR JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans CJK JP",
           "Noto Sans JP", sans-serif;
-  --jps:  "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", "Noto Serif JP", serif;
+  --jps:  "JR JP Serif", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", serif;
   color-scheme: dark;
 }
 
@@ -137,15 +139,7 @@ pre { font: inherit; margin: 0; white-space: pre; }
         text-shadow: 0 0 8px rgba(230, 251, 255, .22); }
 .mast + .mast { margin-top: 1.05em; }
 .dots { color: var(--grey); white-space: pre; overflow: hidden; line-height: 1; margin: 14px 0 0; }
-.gator { margin: 22px 0 0; line-height: 1.3; }
-.gator.small { display: none; }
 
-.hd { margin: 18px auto 0; max-width: 72ch; text-align: center; }
-.hd .row { display: flex; justify-content: space-between; color: var(--ice); gap: 2ch; flex-wrap: wrap; }
-.hd .motto { color: var(--redtx); margin-top: 4px; letter-spacing: .06em; }
-.hd .motto::before { content: "-+- "; color: var(--grey); }
-.hd .motto::after  { content: " -+-"; color: var(--grey); }
-.hd .sub { color: var(--grey); }
 
 .out-body, .file, .intro, .coda { max-width: 72ch; margin-left: 4ch; }
 p { margin: 0 0 1em; }
@@ -238,21 +232,24 @@ html.js.booting .boot { visibility: hidden; }
 .boot.on { visibility: visible; animation: flick .14s steps(2) 1; }
 @keyframes flick { 0% { opacity: .2; } 100% { opacity: 1; } }
 
-/* ---- pop-up terminal windows ----------------------------------------- */
-.wins { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
-.win {
-  position: fixed; pointer-events: auto;
+/* ---- file viewer: one native <dialog> -------------------------------- */
+dialog.win {
+  /* closed dialogs stay display:none; only [open] gets layout */
   width: min(760px, 92vw); max-height: 78vh;
-  display: flex; flex-direction: column;
+  padding: 0; margin: auto;
+  color: var(--text);
   background: var(--glass);
-  border: 1px solid var(--tealx);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, .7), 0 0 0 1px #000;
+  border: 1px solid var(--teal);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .7);
   clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
-  transform-origin: 50% 0;
-  animation: open .16s ease-out 1;
+  overflow: hidden;
+}
+dialog.win[open] { display: flex; flex-direction: column; animation: open .16s ease-out 1; transform-origin: 50% 0; }
+dialog.win::backdrop {
+  background: rgba(0, 0, 0, .62)
+              repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px);
 }
 @keyframes open { from { transform: scaleY(.03); opacity: .4; } to { transform: none; opacity: 1; } }
-.win.front { border-color: var(--teal); }
 .win-bar { display: grid; grid-template-columns: auto 1fr auto auto; align-items: stretch;
            background: var(--panel); border-bottom: 2px solid var(--red);
            cursor: grab; user-select: none; touch-action: none; }
@@ -263,9 +260,10 @@ html.js.booting .boot { visibility: hidden; }
              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .win-tag { align-self: center; font-size: 10px; letter-spacing: .2em; color: var(--teal); padding: 0 10px; }
 .win-x { background: transparent; border: 0; border-left: 1px solid #1d1d1d; color: var(--grey);
-         font: 18px/1 var(--mono); padding: 0 14px; cursor: pointer; }
+         font: 18px/1 var(--mono); padding: 0 14px; cursor: pointer; min-width: 44px; }
 .win-x:hover, .win-x:focus-visible { color: #fff; background: var(--red); outline: none; }
 .win-body { overflow: auto; padding: 16px 20px 18px; overscroll-behavior: contain; }
+.win-body:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
 .win-body .file { margin: 0; max-width: none; }
 .win-body .dv { margin-left: 0; max-width: none; }
 .win-body .cmd { margin-bottom: 10px; }
@@ -307,10 +305,6 @@ html.js.booting .boot { visibility: hidden; }
   .site { padding: 18px 12px; }
   .site::before { font-size: 9.5px; letter-spacing: .14em; left: 10px; }
   .mast { font-size: min(21px, calc((100vw - 56px) / 47 / .6)); line-height: 1; }
-  .gator.wide { display: none; }
-  .gator.small { display: block; font-size: min(15px, calc((100vw - 56px) / 37 / .6)); line-height: 1.15; }
-  .hd { font-size: 12px; }
-  .hd .row { justify-content: space-between; }
 
   .out-body, .file, .intro, .coda { margin-left: 0; }
   .dv { margin-left: 0; }
@@ -328,19 +322,19 @@ html.js.booting .boot { visibility: hidden; }
   .out .block { margin-left: 0; }
   .foot { grid-template-columns: 1fr; padding: 10px 12px 14px; font-size: 9px; letter-spacing: .12em; line-height: 1.6; }
 
-  /* windows become full-screen sheets; no dragging on touch */
-  .win { inset: 0 !important; width: 100%; max-height: none; height: 100%;
-         clip-path: none; border: 0; }
+  /* the viewer becomes a full-screen sheet; no dragging on touch */
+  dialog.win { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+               margin: 0; inset: 0; clip-path: none; border: 0; }
   .win-bar { cursor: default; }
   .win-x { font-size: 22px; padding: 0 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .boot.on, .win { animation: none; }
+  .boot.on, dialog.win[open] { animation: none; }
 }
 
 @media print {
-  .tb, .chev, .alert, .rail, .log, .sec, .prompt, .foot, .wins, .gator, .dots { display: none !important; }
+  .tb, .chev, .alert, .rail, .log, .sec, .prompt, .foot, dialog, .dots, .status { display: none !important; }
   body, .term, .screen { background: #fff; color: #000; }
   .term { clip-path: none; margin: 0; }
   .screen::after, .term::after { display: none; }
@@ -443,4 +437,28 @@ html.js.booting .boot { visibility: hidden; }
   /* wide diagrams keep a readable size and scroll sideways inside their box,
      instead of shrinking to illegible or pushing the page wider */
   .figure.wide img.diagram { width: 640px; max-width: none; }
+}
+
+
+/* ==== V2 ================================================================= */
+/* operator status row under the masthead */
+.status { display: flex; flex-wrap: wrap; gap: 4px 3ch; margin: 14px 0 0; font-size: 12px;
+          letter-spacing: .14em; color: var(--grey); }
+.status b { color: var(--ice); font-weight: 700; }
+.status b.t { color: var(--teal); }
+.status b.r { color: var(--redtx); }
+
+/* every flavored label carries its plain meaning */
+.menu small { display: block; color: var(--grey); font-size: 11px; letter-spacing: .12em;
+              text-transform: uppercase; margin-top: 2px; }
+.dv .plain { font: 400 11px var(--mono); letter-spacing: .14em; text-transform: uppercase;
+             color: var(--grey); align-self: center; margin-left: 1.5ch; }
+.dv .plain::before, .dv .plain::after { content: none; }
+.win-body .dv .plain, .out .dv .plain { display: inline; }
+
+.sig { margin-top: 18px; color: var(--ice); }
+
+@media (max-width: 760px) {
+  .status { font-size: 10.5px; gap: 2px 2ch; }
+  .dv .plain { display: none; }
 }

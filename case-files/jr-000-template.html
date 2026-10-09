@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 <!-- COPY THIS FILE to jr-00N-short-name.html for each new write-up.
      Don't link to this template from the index. Static: no script, no boot. -->
@@ -19,17 +20,18 @@
   <div class="seal" aria-hidden="true"><span>監</span></div>
   <div class="tt"><div class="l1">Corp<span class="long">orate</span> Security Terminal</div>
   <div class="l2"><span class="ja" lang="ja">企業保安部</span><span class="wide">SECURITY OPERATIONS DIVISION // </span>NODE 04-B // FLOOR 88</div></div>
-  <div class="clock" aria-hidden="true"><span class="now">jr#00N</span><span>TEXTFILE</span></div>
+  <div class="clock" aria-hidden="true"><span class="now">jr#00N</span><span>CASE FILE</span></div>
 </header>
 <div class="chev" aria-hidden="true"></div>
-<div class="alert"><span><span class="pill">jr#00N</span>TEXTFILE<span class="wide"> // REMOTE MOUNT jr-01</span></span><span class="ja" lang="ja">文書</span></div>
+<div class="alert"><span><span class="pill">jr#00N</span>CASE FILE<span class="wide"> // REMOTE MOUNT jr-01</span></span><span class="ja" lang="ja" aria-hidden="true">文書</span></div>
 
 <main class="screen" id="main">
 <article class="read">
-<p class="cmd" aria-hidden="true"><span class="u">ghost@jr-01</span><span class="p">:/public$</span> <span class="c">cat textfiles/jr-00N.txt</span></p>
+<p class="cmd" aria-hidden="true"><span class="u">runner@jr-01</span><span class="p">:/public$</span> <span class="c">cat case-files/jr-00N.txt</span></p>
 
 <h1>Title goes here</h1>
-<p class="meta">released 2026-MM-DD &middot; proxmox / opnsense / att&amp;ck &middot; <a href="https://github.com/jreid-sec/homelab-soc">repo</a></p>
+<p class="meta">released 2026-MM-DD &middot; proxmox / opnsense / att&amp;ck</p>
+<!-- once the repo is public, add to the line above:  &middot; <a href="https://github.com/jreid-sec/homelab-soc">repo</a> -->
 
 <section class="tldr" aria-label="Summary">
   <p class="lbl">SUMMARY</p>
@@ -73,7 +75,7 @@ Paste the rule in a code block and explain each condition in a sentence.</p>
 <h2>What I'd do differently</h2>
 <p>One honest paragraph.</p>
 
-<p class="back"><a href="/#textfiles">&larr; back to the textfiles</a></p>
+<p class="back"><a href="/#case-files">&larr; back to case files</a></p>
 </article>
 </main>
 

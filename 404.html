@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 <title>404 :: No such file or directory</title>
 </head>
@@ -18,14 +19,14 @@
   <div class="clock" aria-hidden="true"><span class="now">--:--:--</span><span>SESSION ----</span></div>
 </header>
 <div class="chev" aria-hidden="true"></div>
-<div class="alert" role="status"><span><span class="pill">404</span>REQUESTED FILE NOT FOUND</span><span class="ja" lang="ja">ファイルなし</span></div>
+<div class="alert" role="status"><span><span class="pill">404</span>REQUESTED FILE NOT FOUND</span><span class="ja" lang="ja" aria-hidden="true">ファイルなし</span></div>
 <main class="screen">
 <h1 class="visually-hidden">Page not found</h1>
-<p class="cmd"><span class="u">ghost@jr-01</span><span class="p">:/public$</span> <span class="c">cat ./that-file</span></p>
+<p class="cmd"><span class="u">runner@jr-01</span><span class="p">:/public$</span> <span class="c">cat ./that-file</span></p>
 <p class="r">cat: ./that-file: No such file or directory</p>
 <div class="intro">
-<p>Nothing lives at this address. It may have moved, or it was never released.</p>
-<p><a href="/">Back to the terminal</a> or <a href="/#textfiles">browse the textfiles</a>.</p>
+<p>No route to this address. It was here once, or it never was. The index is still lit.</p>
+<p><a href="/">Back to the terminal</a>, or <a href="/#case-files">open the case files</a>.</p>
 <blockquote><p>"Do nothing which is of no use."</p><cite>Miyamoto Musashi, The Book of Five Rings</cite></blockquote>
 </div>
 </main>
